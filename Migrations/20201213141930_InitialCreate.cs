@@ -23,6 +23,11 @@ namespace JWTAuth.Migrations
                     table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "ActivateKey", "DateCreated", "Name", "PasswordHash", "Status" },
+                values: new object[] { 1, "", "12/13/2020 2:19:29 PM", "admin@admin.com", "AQAAAAEAACcQAAAAEEuZMQSPyBWSA+9sPwLsJvEeL3wMoqj2XFuPs8dfappQ0AXbs9cRzN9/+Cb76U+j4g==", 1 });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Name",
                 table: "Users",

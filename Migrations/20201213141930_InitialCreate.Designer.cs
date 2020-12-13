@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JWTAuth.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201212003426_InitialCreate")]
+    [Migration("20201213141930_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,17 @@ namespace JWTAuth.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ActivateKey = "",
+                            DateCreated = "12/13/2020 2:19:29 PM",
+                            Name = "admin@admin.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEuZMQSPyBWSA+9sPwLsJvEeL3wMoqj2XFuPs8dfappQ0AXbs9cRzN9/+Cb76U+j4g==",
+                            Status = 1
+                        });
                 });
 #pragma warning restore 612, 618
         }

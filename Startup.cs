@@ -90,6 +90,14 @@ namespace JWTAuth
             app.UseRouting();
 
             //Added by me
+            // global cors policy
+            app.UseCors(conf => conf
+                .WithOrigins("*")
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            //Added by me
             app.UseAuthentication();
 
             app.UseAuthorization();
