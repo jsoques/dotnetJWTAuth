@@ -97,15 +97,15 @@ namespace JWTAuth.Controllers
             {
                 ServiceResponse<JwtTokens> respjwtTokens = new ServiceResponse<JwtTokens>();
 
-                _jwtAuthManager.RemoveRefreshTokenByUserName(authUser.Name);
+                _jwtAuthManager.RemoveRefreshTokenByUserName(authUser.Email);
                 var claims = new[]
                 {
-                    new Claim("Email", authUser.Name),
+                    new Claim("Email", authUser.Email),
                     new Claim("Role", "role"),
                     new Claim("Activated", response.Data.Status == UserStatus.Disabled ? "False": "True")
                 };
-                var jwtResult = _jwtAuthManager.GenerateTokens(authUser.Name, claims, DateTime.Now);
-                _logger.LogInformation($"User [{authUser.Name}] logged in the system.");
+                var jwtResult = _jwtAuthManager.GenerateTokens(authUser.Email, claims, DateTime.Now);
+                _logger.LogInformation($"User [{authUser.Email}] logged in the system.");
                 JwtTokens jwtTokens = new JwtTokens();
                 jwtTokens.AccessToken = jwtResult.AccessToken.ToString();
                 jwtTokens.RefreshToken = jwtResult.RefreshToken.TokenString;

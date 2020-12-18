@@ -141,7 +141,7 @@ namespace JWTAuth.Services
             try
             {
                 User user = await (from u in _context.Users
-                                   where u.Name == authUser.Name
+                                   where u.Name == authUser.Email
                                    select u).FirstOrDefaultAsync();
 
                 //if (user == null || !BC.Verify(authUser.Password, user.Password))
