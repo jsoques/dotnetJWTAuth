@@ -13,6 +13,7 @@ namespace JWTAuth.Services
         Task<ServiceResponse<GetUserDto>> UpdateUser(UpdateUserDto updatedUser);
         Task<ServiceResponse<List<GetUserDto>>> DeleteUser(int id);
         Task<ServiceResponse<GetUserDto>> AuthenticateUser(AuthenticateUserDto authUser);
+        Task<GetUserDto> GetById(int id);
     }
 
 }

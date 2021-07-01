@@ -68,6 +68,7 @@ namespace JWTAuth
             //Added by me
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
 
             services.AddSwaggerGen(c =>
             {

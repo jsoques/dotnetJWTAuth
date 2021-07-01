@@ -165,6 +165,36 @@ namespace JWTAuth.Services
             return serviceResponse;
         }
 
+        public async Task<GetUserDto> GetById(int id)
+        {
+
+            GetUserDto userDto = null;
+
+            try
+            {
+                User user = await (from u in _context.Users
+                                   where u.Id == id
+                                   select u).FirstOrDefaultAsync();
+
+                //if (user == null || !BC.Verify(authUser.Password, user.Password))
+                if (user != null)
+                {
+                    userDto = new GetUserDto()
+                    {
+                        Id = user.Id,
+                        ActivateKey = user.ActivateKey,
+                        Name = user.Name,
+                        Status = user.Status
+                    };
+                }
+            }
+            catch (System.Exception)
+            {
+
+            }
+            return userDto;
+        }
+
         private string xHashPassword(string password)
         {
             byte[] salt = new byte[128 / 8];

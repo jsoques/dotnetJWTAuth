@@ -35,6 +35,14 @@ namespace JWTAuth.Controllers
         [HttpGet("")]
         public async Task<IActionResult> Get()
         {
+
+            Console.Out.WriteLine("-----------------------------------------------");
+            User.Claims.ToList().ForEach(c => {
+                Console.Out.WriteLine(c.ToString());
+            });
+            Console.Out.WriteLine("-----------------------------------------------");
+
+
             return Ok(await _userService.GetAllUsers());
         }
 

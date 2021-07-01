@@ -132,6 +132,7 @@ namespace JWTAuth.JWT
             randomNumberGenerator.GetBytes(randomNumber);
             return Convert.ToBase64String(randomNumber);
         }
+
     }
 
     public class JwtAuthResult
